@@ -45,7 +45,7 @@ time_reboot() {
 if [ "$(lsb_release -rs)" = "8*|9*|10*|11*|16.04*|18.04*" ]; then
   clear
   print_center -ama -e "\e[1m\e[31m=====================================================\e[0m"
-  print_center -ama -e "\e[1m\e[33m${a94:-this script is NO compatible with your operating system}\e[0m"
+  print_center -ama -e "\e[1m\e[33m${a94:-tu script  NO es compatible con tu operating system}\e[0m"
   print_center -ama -e "\e[1m\e[33m ${a95:-Use Ubuntu 20 or higher}\e[0m"
   print_center -ama -e "\e[1m\e[31m=====================================================\e[0m"
   rm /home/ubuntu/install.sh
@@ -54,7 +54,7 @@ else
   clear
   echo ""
   print_center -ama "A Compatible OS/Environment Found"
-  print_center -ama " ⇢ Installation begins...! <"
+  print_center -ama " ⇢ CONTINUAR Instalacion...! <"
   sleep 3
 
     # [change timezone to UTC +0]
@@ -129,7 +129,7 @@ else
   echo ""
   print_center -ama "${a103:-setting up, please wait...}"
   sleep 3
-  title "${a102:-Installation Successful}"
+  title "${a102:-INTALACION COMPLETA }"
   print_center -ama "${a103:-  PARA VER EL MENU type: \nudp\n}"
   msg -bar
   time_reboot 5
