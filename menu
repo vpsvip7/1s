@@ -288,7 +288,7 @@ case "$x" in
    autoexec
    ;;
    30)
-   wget -O /bin/menu https://raw.githubusercontent.com/vpsvip7/2d/main/menu
+   wget -O /bin/menu https://raw.githubusercontent.com/vpsvip7/1s/main/menu
    ;;
    31)
    clear
