@@ -288,7 +288,7 @@ case "$x" in
    autoexec
    ;;
    30)
-   wget -O /bin/menu https://raw.githubusercontent.com/vpsvip7/2d/main/menu
+   wget -O /bin/menu https://raw.githubusercontent.com/vpsvip7/1s/main/menu
    ;;
    31)
    clear
@@ -298,13 +298,13 @@ case "$x" in
    menu
    ;;
    0|00)
-   echo -e "\033[1;saliendo...\033[0m"
+   echo -e "\033[1;SALIENDO...\033[0m"
    sleep 3
    clear
    menu;
    ;;
    *)
-   echo -e "\n\033[1;31mOpcion invalida !\033[0m"
+   echo -e "\n\033[1;31mOPCION INVALIDA !\033[0m"
    sleep 3
 esac
 }
