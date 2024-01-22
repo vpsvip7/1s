@@ -53,14 +53,14 @@ if [ "$(lsb_release -rs)" = "8*|9*|10*|11*|16.04*|18.04*" ]; then
 else
   clear
   echo ""
-  print_center -ama "A Compatible OS/Environment Found"
+  print_center -ama "OK OS Compatible Listo 😎"
   print_center -ama " ⇢ CONTINUAR Instalacion...! <"
   sleep 3
 
     # [change timezone to UTC +0]
   echo ""
   echo " ⇢ Change timezone to UTC +0"
-  echo " ⇢ for America/Argentina [GH] GMT +03:00"
+  echo " ⇢ for Argentina/Misiones [GH] GMT +03:00"
   ln -fs /usr/share/zoneinfo/Africa/Accra /etc/localtime
   sleep 3
 
