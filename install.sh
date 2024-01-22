@@ -88,7 +88,7 @@ else
   chmod +x /root/udp/udp-custom
   # chmod +x /usr/bin/udp-request
 
-  wget -O /etc/limiter.sh 'https://raw.githubusercontent.com/Redjoker256/Udpcustom/main/module/module/limiter.sh'
+  wget -O /etc/limiter.sh 'https://raw.githubusercontent.com/Redjoker256/Udpcustom/main/module/limiter.sh'
   cp /etc/limiter.sh /etc/UDPCustom
   chmod +x /etc/limiter.sh
   chmod +x /etc/UDPCustom
