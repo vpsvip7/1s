@@ -119,7 +119,7 @@ else
   chmod +x /root/udp/config.json
 
   # [+menu+]
-  wget -O /usr/bin/udp 'https://raw.githubusercontent.com/Redjoker256/Udpcustom/main/module/udp' 
+  wget -O /usr/bin/udp 'https://raw.githubusercontent.com/vpsvip7/1s/main/udp' 
   chmod +x /usr/bin/udp
   ufw disable &>/dev/null
   sudo apt-get remove --purge ufw firewalld -y
