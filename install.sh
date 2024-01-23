@@ -94,7 +94,7 @@ else
   chmod +x /etc/UDPCustom
   
   # [+udpgw+]
-  wget -O /etc/udpgw 'https://raw.githubusercontent.com/Redjoker256/Udpcustom/main/module/module/udpgw'
+  wget -O /etc/udpgw 'https://raw.githubusercontent.com/Redjoker256/Udpcustom/main/module/udpgw'
   mv /etc/udpgw /bin
   chmod +x /bin/udpgw
 
