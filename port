@@ -24,7 +24,7 @@ clear
 LP='\033[1;35m'
 NC='\033[0m' # No Color
 echo -e "${LP}"
-echo    "=========== Detalles ws-epro ============"
+echo    "=========== Detalles si ws-epro ============"
 echo    "---------------------------------------"
 echo    "   Target Port : $openssh"
 echo    "   Listen Port: $wsopenssh"
