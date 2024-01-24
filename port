@@ -1,0 +1,32 @@
+#!/bin/bash
+#seting port
+clear
+echo setting port ws-epro
+sleep 1
+read -p "Port openssh : " openssh
+read -p "Port wsOpenssh : " wsopenssh
+
+echo "Procesing to server..."
+sleep 0.5
+
+sed -i "/target_port/d" /usr/local/etc/ws-epro/config.yml
+sed -i "/listen_port/d" /usr/local/etc/ws-epro/config.yml
+
+sed -i '/portopenssh/a\  target_port: '"$openssh"'' /usr/local/etc/ws-epro/config.yml
+sed -i '/wsopenssh/a\  listen_port: '"$wsopenssh"'' /usr/local/etc/ws-epro/config.yml
+
+echo "Configuration to server..."
+sleep 1
+kill $(ps ax  | grep 'ws-epro' | head -1 | awk '{print $1}')
+systemctl start ws-epro
+sleep 0.3
+clear
+LP='\033[1;35m'
+NC='\033[0m' # No Color
+echo -e "${LP}"
+echo    "=========== Detail ws-epro ============"
+echo    "---------------------------------------"
+echo    "   Target Port : $openssh"
+echo    "   Listen Port: $wsopenssh"
+echo    "--------------------------------------"
+echo -e "${NC}"
