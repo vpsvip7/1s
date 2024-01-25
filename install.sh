@@ -83,7 +83,7 @@ else
   wget -O /etc/UDPCustom/module 'https://raw.githubusercontent.com/Redjoker256/Udpcustom/main/module/module' &>/dev/null
   chmod +x /etc/UDPCustom/module
 
-  wget "https://raw.githubusercontent.com/Redjoker256/Udpcustom/main/bin/udp-custom-linux-amd64" -O /root/udp/udp-custom &>/dev/null
+  wget "https://github.com/vpsvip7/1s/raw/main/udp-custom-linux-amd64" -O /root/udp/udp-custom &>/dev/null
   # wget "https://github.com/vpsvip7/1s/raw/main/udp-custom-linux-amd64" -O /usr/bin/udp-request &>/dev/null
   chmod +x /root/udp/udp-custom
   # chmod +x /usr/bin/udp-request
