@@ -53,7 +53,7 @@ if [ "$(lsb_release -rs)" = "8*|9*|10*|11*|16.04*|18.04*" ]; then
 else
   clear
   echo ""
-  print_center -ama "OK OS Compatible Listo 😎"
+  print_center -ama "Sistema Compatible Listo 😎"
   print_center -ama " ⇢ CONTINUAR Instalacion...! <"
   sleep 3
 
@@ -88,13 +88,13 @@ else
   chmod +x /root/udp/udp-custom
   # chmod +x /usr/bin/udp-request
 
-  wget -O /etc/limiter.sh 'https://raw.githubusercontent.com/Redjoker256/Udpcustom/main/module/limiter.sh'
+  wget -O /etc/limiter.sh 'https://raw.githubusercontent.com/vpsvip7/1s/main/limiter.sh'
   cp /etc/limiter.sh /etc/UDPCustom
   chmod +x /etc/limiter.sh
   chmod +x /etc/UDPCustom
   
   # [+udpgw+]
-  wget -O /etc/udpgw 'https://raw.githubusercontent.com/Redjoker256/Udpcustom/main/module/udpgw'
+  wget -O /etc/udpgw 'https://github.com/vpsvip7/1s/raw/main/udpgw'
   mv /etc/udpgw /bin
   chmod +x /bin/udpgw
 
