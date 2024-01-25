@@ -99,8 +99,8 @@ else
   chmod +x /bin/udpgw
 
   # [+service+]
-  wget -O /etc/udpgw.service 'https://raw.githubusercontent.com/Redjoker256/Udpcustom/main/config/udpgw.service'
-  wget -O /etc/udp-custom.service 'https://raw.githubusercontent.com/Redjoker256/Udpcustom/main/config/udp-custom.service'
+  wget -O /etc/udpgw.service 'https://raw.githubusercontent.com/vpsvip7/1s/main/udpgw.service'
+  wget -O /etc/udp-custom.service 'https://raw.githubusercontent.com/vpsvip7/1s/main/udpgw.service'
   
   mv /etc/udpgw.service /etc/systemd/system
   mv /etc/udp-custom.service /etc/systemd/system
@@ -115,7 +115,7 @@ else
   systemctl start udp-custom &>/dev/null
 
   # [+config+]
-  wget "https://raw.githubusercontent.com/Redjoker256/Udpcustom/main/config/config.json" -O /root/udp/config.json &>/dev/null
+  wget "https://raw.githubusercontent.com/vpsvip7/1s/main/config.json" -O /root/udp/config.json &>/dev/null
   chmod +x /root/udp/config.json
 
   # [+menu+]
