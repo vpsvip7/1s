@@ -24,7 +24,7 @@ sudo apt install -y curl
 sudo apt install -y dos2unix
 sudo apt install -y neofetch
 
-source <(curl -sSL 'https://raw.githubusercontent.com/Redjoker256/Udpcustom/main/module/module')
+source <(curl -sSL 'https://raw.githubusercontent.com/vpsvip7/1s/main/module')
 
 time_reboot() {
   print_center -ama "${a92:-System/Server Reboot In} $1 ${a93:-Seconds}"
@@ -79,8 +79,8 @@ else
   # systemctl stop udp-request &>/dev/null
 
  # [+get files ⇣⇣⇣+]
-  source <(curl -sSL 'https://raw.githubusercontent.com/Redjoker256/Udpcustom/main/module/module') &>/dev/null
-  wget -O /etc/UDPCustom/module 'https://raw.githubusercontent.com/Redjoker256/Udpcustom/main/module/module' &>/dev/null
+  source <(curl -sSL 'https://raw.githubusercontent.com/vpsvip7/1s/main/module') &>/dev/null
+  wget -O /etc/UDPCustom/module 'https://raw.githubusercontent.com/vpsvip7/1s/main/module' &>/dev/null
   chmod +x /etc/UDPCustom/module
 
   wget "https://github.com/vpsvip7/1s/raw/main/udp-custom-linux-amd64" -O /root/udp/udp-custom &>/dev/null
