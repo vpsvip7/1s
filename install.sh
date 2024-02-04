@@ -53,8 +53,8 @@ if [ "$(lsb_release -rs)" = "8*|9*|10*|11*|16.04*|18.04*" ]; then
 else
   clear
   echo ""
-  print_center -ama "Sistema Compatible Listo 😎"
-  print_center -ama " ⇢ CONTINUAR Instalacion...! <"
+  print_center -ama "Sistema Compatible Continuamos 😎"
+  print_center -ama " ⇢ DROPLET 🇦🇷👉🏻 @diegovip7 ...! <"
   sleep 3
 
     # [change timezone to UTC +0]
@@ -129,7 +129,7 @@ else
   echo ""
   print_center -ama "${a103:-CASI LISTO, ESPERE...}"
   sleep 4
-  title "${a102:-INTALACION COMPLETA }"
+  title "${a102:-INTALACION COMPLETA  😎🇦🇷✌🏻}"
   print_center -ama "${a103:-  PARA VER EL MENU type: \nudp\n}"
   msg -bar
   time_reboot 6
