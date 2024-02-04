@@ -30,9 +30,9 @@ time_reboot() {
   print_center -ama "${a92:-System/Server Reboot In} $1 ${a93:-Seconds}"
   REBOOT_TIMEOUT="$1"
 
-  while [ $REBOOT_TIMEOUT -gt 2 ]; do
+  while [ $REBOOT_TIMEOUT -gt 3 ]; do
     print_center -ne "-$REBOOT_TIMEOUT-\r"
-    sleep 2
+    sleep 3
     : $((REBOOT_TIMEOUT--))
   done
   rm /home/ubuntu/install.sh &>/dev/null
@@ -127,10 +127,10 @@ else
   clear
   echo ""
   echo ""
-  print_center -ama "${a103:-setting up, please wait...}"
-  sleep 3
+  print_center -ama "${a103:-CASI LISTO, ESPERE...}"
+  sleep 4
   title "${a102:-INTALACION COMPLETA }"
   print_center -ama "${a103:-  PARA VER EL MENU type: \nudp\n}"
   msg -bar
-  time_reboot 5
+  time_reboot 6
 fi
