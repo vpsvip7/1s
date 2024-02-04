@@ -17,7 +17,6 @@ sudo touch /etc/UDPCustom/udp-custom
 udp_dir='/etc/UDPCustom'
 udp_file='/etc/UDPCustom/udp-custom'
 
-sudo apt install -y git
 sudo apt install -y wget
 sudo apt install -y curl
 sudo apt install -y dos2unix
