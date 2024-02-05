@@ -1,0 +1,205 @@
+{
+    "status":200,
+    "data":[
+        {
+            "id":11803,
+            "user_id":"9b71a7a1-9821-4f7a-a768-c0924add67c0",
+            "category_id":1393,
+            "name":"VIVO 01vip",
+            "description":"Config exemplo",
+            "config_payload":{
+                "payload":"GET / HTTP/1.1[crlf]Host:[random\u003d10.sshtproect.shop;08.sshtproect.shop;01.sshtproect.shop;07.sshtproect.shop;02.sshtproect.shop;06.sshtproect.shop;03.sshtproect.shop;05.sshtproect.shop;04.sshtproect.shop;09.sshtproect.shop;11.sshtproect.shop][crlf]Connection: Upgrade[crlf]Upgrade: Websocket[crlf][crlf]",
+                "sni":null
+            },
+            "config_openvpn":null,
+            "config_v2ray":null,
+            "auth":{
+                "username":"ssht",
+                "password":"ssht",
+                "v2ray_uuid":null
+            },
+            "proxy":{
+                "host":"104.18.7.41",
+                "port":80
+            },
+            "server":{
+                "host":"104.18.7.41",
+                "port":80
+            },
+            "dns_server":{
+                "dns1":"8.8.8.8",
+                "dns2":"8.8.4.4"
+            },
+            "udp_ports":[
+                7300
+            ],
+            "mode":"SSH_PROXY",
+            "status":"ACTIVE",
+            "url_check_user":"",
+            "icon":"https://i.postimg.cc/zGkCkkCs/VIVO.png",
+            "sorter":1,
+            "category":{
+                "id":1393,
+                "user_id":"9b71a7a1-9821-4f7a-a768-c0924add67c0",
+                "name":"VIVO",
+                "status":"ACTIVE",
+                "sorter":1,
+                "color":"#97434343",
+                "created_at":"2023-01-10 23:46:56",
+                "updated_at":"2023-01-24 21:59:23"
+            },
+            "created_at":"2023-01-11 01:44:26",
+            "updated_at":"2023-02-02 12:49:43"
+        },
+        {
+            "id":11804,
+            "user_id":"9b71a7a1-9821-4f7a-a768-c0924add67c0",
+            "category_id":1393,
+            "name":"VIVO V2RAY444",
+            "description":"Config exemplo",
+            "config_payload":{
+                "payload":"",
+                "sni":null
+            },
+            "config_openvpn":null,
+            "config_v2ray":"dm1lc3M6Ly9leUpoWkdRaU9pSjFjM1l0TkM1dmNHVnVkakp5WVhrdVkyOXRJaXdpWVdsa0lqb2lNVFlpTENKb2IzTjBJam9pTVRBMExqRTJMalV6TGpFeE1TSXNJbWxrSWpvaVlUUXdaRE0wWXpZdFlqYzNZeTAwTmpRNExUa3lNVEF0TTJVNFpESm1OREl5Tm1JMUlpd2libVYwSWpvaWQzTWlMQ0p3WVhSb0lqb2lMMjl3Wlc1MGRXNXVaV3cvZFhObGNqMXZjR1Z1ZEhWdWJtVnNMbTVsZEMxc2FXZG9kQ0lzSW5CdmNuUWlPaUk0TUNJc0luQnpJam9pYjNCbGJuUjFibTVsYkM1dVpYUXRiR2xuYUhRaUxDSjBiSE1pT2lJaUxDSjBlWEJsSWpvaWJtOXVaU0lzSW5ZaU9pSXlJbjA9",
+            "auth":{
+                "username":"",
+                "password":"",
+                "v2ray_uuid":"a40d34c6-b77c-4648-9210-3e8d2f4226b5"
+            },
+            "proxy":{
+                "host":null,
+                "port":null
+            },
+            "server":{
+                "host":null,
+                "port":null
+            },
+            "dns_server":{
+                "dns1":"8.8.8.8",
+                "dns2":"8.8.4.4"
+            },
+            "udp_ports":[
+                7300
+            ],
+            "mode":"V2RAY",
+            "status":"ACTIVE",
+            "url_check_user":"",
+            "icon":"https://i.postimg.cc/zGkCkkCs/VIVO.png",
+            "sorter":2,
+            "category":{
+                "id":1393,
+                "user_id":"9b71a7a1-9821-4f7a-a768-c0924add67c0",
+                "name":"VIVO",
+                "status":"ACTIVE",
+                "sorter":1,
+                "color":"#97434343",
+                "created_at":"2023-01-10 23:46:56",
+                "updated_at":"2023-01-24 21:59:23"
+            },
+            "created_at":"2023-01-11 01:44:26",
+            "updated_at":"2023-02-02 12:49:43"
+        },
+        {
+            "id":14643,
+            "user_id":"9b71a7a1-9821-4f7a-a768-c0924add67c0",
+            "category_id":1846,
+            "name":"TIM",
+            "description":"Config exemplo",
+            "config_payload":{
+                "payload":"GET / HTTP/1.1\\nHost: api.sandbox.c6bank.com.br\\nExpect: 100-continue\\n\\n[split]\\n\\nACL /?/ HTTP/1.1\\nHost: dtunnel.pt\\nExpect: 100-continue\\nUpgrade: websocket\\nUser-Agent: Googlebot/2.1 (+http://www.google.com/bot.html)\\n\\n",
+                "sni":null
+            },
+            "config_openvpn":null,
+            "config_v2ray":null,
+            "auth":{
+                "username":"vpn",
+                "password":"1234",
+                "v2ray_uuid":null
+            },
+            "proxy":{
+                "host":"104.19.239.25",
+                "port":80
+            },
+            "server":{
+                "host":"104.19.239.25",
+                "port":80
+            },
+            "dns_server":{
+                "dns1":"0.0.0.0",
+                "dns2":"8.8.8.8"
+            },
+            "udp_ports":[
+                7300
+            ],
+            "mode":"SSH_PROXY",
+            "status":"ACTIVE",
+            "url_check_user":null,
+            "icon":null,
+            "sorter":2,
+            "category":{
+                "id":1846,
+                "user_id":"9b71a7a1-9821-4f7a-a768-c0924add67c0",
+                "name":"TIM",
+                "status":"ACTIVE",
+                "sorter":2,
+                "color":"#97434343",
+                "created_at":"2023-01-18 15:56:15",
+                "updated_at":"2023-01-24 21:59:17"
+            },
+            "created_at":"2023-01-18 16:10:54",
+            "updated_at":"2023-01-23 21:32:58"
+        },
+        {
+            "id":11787,
+            "user_id":"9b71a7a1-9821-4f7a-a768-c0924add67c0",
+            "category_id":1394,
+            "name":"Oi",
+            "description":"Config exemplo",
+            "config_payload":{
+                "payload":null,
+                "sni":"oi-recarga.m4u.com.br"
+            },
+            "config_openvpn":null,
+            "config_v2ray":null,
+            "auth":{
+                "username":"vpn",
+                "password":"1234",
+                "v2ray_uuid":null
+            },
+            "proxy":{
+                "host":null,
+                "port":80
+            },
+            "server":{
+                "host":"20.226.48.169",
+                "port":443
+            },
+            "dns_server":{
+                "dns1":"0.0.0.0",
+                "dns2":"8.8.4.4"
+            },
+            "udp_ports":[
+                7300
+            ],
+            "mode":"SSL_DIRECT",
+            "status":"ACTIVE",
+            "url_check_user":"",
+            "icon":"https://i.postimg.cc/v8C0NXpk/1673416633396.png",
+            "sorter":1,
+            "category":{
+                "id":1394,
+                "user_id":"9b71a7a1-9821-4f7a-a768-c0924add67c0",
+                "name":"OI",
+                "status":"ACTIVE",
+                "sorter":4,
+                "color":"#97434343",
+                "created_at":"2023-01-10 23:53:17",
+                "updated_at":"2023-01-24 21:59:11"
+            },
+            "created_at":"2023-01-10 23:53:17",
+            "updated_at":"2023-01-23 21:27:37"
+        }
+    ]
+}
