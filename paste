@@ -55,18 +55,18 @@
             "id":11804,
             "user_id":"9b71a7a1-9821-4f7a-a768-c0924add67c0",
             "category_id":1393,
-            "name":"VIVO V2RAY444",
+            "name":"Fastly V2RAY444",
             "description":"Config exemplo",
             "config_payload":{
                 "payload":"",
                 "sni":null
             },
             "config_openvpn":null,
-            "config_v2ray":"dm1lc3M6Ly9leUpoWkdRaU9pSjFjM1l0TkM1dmNHVnVkakp5WVhrdVkyOXRJaXdpWVdsa0lqb2lNVFlpTENKb2IzTjBJam9pTVRBMExqRTJMalV6TGpFeE1TSXNJbWxrSWpvaVlUUXdaRE0wWXpZdFlqYzNZeTAwTmpRNExUa3lNVEF0TTJVNFpESm1OREl5Tm1JMUlpd2libVYwSWpvaWQzTWlMQ0p3WVhSb0lqb2lMMjl3Wlc1MGRXNXVaV3cvZFhObGNqMXZjR1Z1ZEhWdWJtVnNMbTVsZEMxc2FXZG9kQ0lzSW5CdmNuUWlPaUk0TUNJc0luQnpJam9pYjNCbGJuUjFibTVsYkM1dVpYUXRiR2xuYUhRaUxDSjBiSE1pT2lJaUxDSjBlWEJsSWpvaWJtOXVaU0lzSW5ZaU9pSXlJbjA9",
+            "config_v2ray":"dm1lc3M6Ly9leUoySWpvZ0lqSWlMQ0FpY0hNaU9pQWlNVGcyTGpFME9DNHlNalF1TVRReU9qSXdOVElpTENBaVlXUmtJam9nSW1aaGMzUnNlUzUyTWpBd0xtTnNiM1ZrSWl3Z0luQnZjblFpT2lBNE1Dd2dJbUZwWkNJNklEQXNJQ0owZVhCbElqb2dJaUlzSUNKdVpYUWlPaUFpZDNNaUxDQWljR0YwYUNJNklDSXZlalp5TkUxaWMxRXZJaXdnSW1odmMzUWlPaUFpZG1sd09IcDZMbU52YlM1bmJHOWlZV3d1Y0hKdlpDNW1ZWE4wYkhrdWJtVjBJaXdnSW1sa0lqb2dJbVJoT1dRMVpEUTRMVGd6WTJJdE5ETXhOQzFoWW1ZNExUWm1aamRsTURSbU9EbGhaaUlzSUNKMGJITWlPaUFpYm05dVpTSjk=",
             "auth":{
                 "username":"",
                 "password":"",
-                "v2ray_uuid":"a40d34c6-b77c-4648-9210-3e8d2f4226b5"
+                "v2ray_uuid":"da9d5d48-83cb-4314-abf8-6ff7e04f89af"
             },
             "proxy":{
                 "host":null,
