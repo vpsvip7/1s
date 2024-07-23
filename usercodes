@@ -57,7 +57,7 @@
  cd $HOME
  zip ./$1.zip ./$1.ovpn > /dev/null 2>&1
  rm ./$1.ovpn > /dev/null 2>&1
- echo -e "\033[1;31m$(fun_trans "File created"): ($HOME/$1.zip)"
+ echo -e "\033[1;31m$(fun_trans "File Creado ✅"): ($HOME/$1.zip)"
  fi
  }
  unlockall2 () {
@@ -72,7 +72,7 @@
  clear
  msg -bar
  msg -tit
- echo -e "\033[1;31m       DELETE ALL REGISTERED USERS"
+ echo -e "\033[1;31m       BORRAR ALL REGISTERED USERS"
  msg -bar
  read -p "   ►► Enter to Continue or CTRL + C Cancel ◄◄"
  echo ""
@@ -144,7 +144,7 @@
  local port_dropbear="$DPB"
  cat /var/log/auth.log|tail -1000 > /var/log/authday.log
  local log=/var/log/authday.log
- local loginsukses='Password auth succeeded'
+ local loginsukses='Contraseña auth succeeded'
  [[ -z $port_dropbear ]] && return 1
  for port in `echo $port_dropbear`; do
  for pidx in $(ps ax |grep dropbear |grep "$port" |awk -F" " '{print $1}'); do
@@ -178,7 +178,7 @@
  WWY="207LpTMnVMn_pQYQKW3V9w"
  URL="https://api.telegram.org/bot$KEY/sendMessage"
  MSG="⚠️ VPS NOTICE: $NOM1 ⚠️
- 🔹 ACCOUNT: $1
+ 🔹 CUENTA: $1
  ❗️📵 FIXED/TEMPORARY BLOCK 📵❗️
  🔓( AUTO UNLOCK ON $limseg SECONDS) 🔓"
  curl -s --max-time 10 -d "chat_id=$IDB1&disable_web_page_preview=1&text=$MSG" $URL &>/dev/null
@@ -238,7 +238,7 @@
  done
  msg -bar
  fi
- msg -ama "$(fun_trans "Type or Elegir a User")"
+ msg -ama "$(fun_trans "Escribe or Elegir a User")"
  msg -bar
  unset selection
  while [[ ${selection} = "" ]]; do
@@ -260,10 +260,10 @@
  msg -bar
  return 1
  }
- msg -ne "$(fun_trans "Selected User"): " && echo -ne "$usuario_del "
+ msg -ne "$(fun_trans "ELEGIR User"): " && echo -ne "$usuario_del "
  block_userfun "$usuario_del" && msg -verm "[$(fun_trans "Locked")]" || msg -verd "[$(fun_trans "Unlocked")]"
  msg -bar
- msg -ne " Enter To Continue" && read enter
+ msg -ne " Enter Para Continue" && read enter
  ${SCPusr}/usercodes
  }
  msg -bar3
@@ -273,9 +273,9 @@
  valid=$(date '+%C%y-%m-%d' -d " +$3 days") && datexp=$(date "+%F" -d " + $3 days")
  if useradd -M -s /bin/false -e ${valid} -K PASS_MAX_DAYS=$3 -p $(openssl passwd -1 $2) -c sshm,$2 $1 ; then
  echo "$1|$2|${datexp}|$4" >> ${USRdatabase}
- msg -verd "$(fun_trans "User Created Successfully")"
+ msg -verd "$(fun_trans "User Creado ✅ Successfully")"
  else
- msg -verm2 "$(fun_trans "Error, User not created")"
+ msg -verm2 "$(fun_trans "Error, User no Creado ❌")"
  msg -bar
  fi
  }
@@ -285,9 +285,9 @@
  valid=$(date '+%C%y-%m-%d' -d " +$3 days") && datexp=$(date "+%F" -d " + $3 days")
  if useradd -M -s /bin/false -e ${valid} -K PASS_MAX_DAYS=$3 -p $(openssl passwd -1 $2) -c hwid,$1 $2 ; then
  echo "$1|$2|${datexp}" >> ${USRdatabaseh}
- msg -verd "$(fun_trans "User Created Successfully")"
+ msg -verd "$(fun_trans "User Creado ✅ Successfully")"
  else
- msg -verm2 "$(fun_trans "Error, User not created")"
+ msg -verm2 "$(fun_trans "Error, User no Creado ❌")"
  msg -bar
  fi
  }
@@ -297,9 +297,9 @@
  valid=$(date '+%C%y-%m-%d' -d " +$3 days") && datexp=$(date "+%F" -d " + $3 days")
  if useradd -M -s /bin/false -e ${valid} -K PASS_MAX_DAYS=$3 -p $(openssl passwd -1 $2) -c token,$1 $2 ; then
  echo "$1|$2|${datexp}" >> ${tokens}
- msg -verd "$(fun_trans "User Created Successfully")"
+ msg -verd "$(fun_trans "User Creado ✅ Successfully")"
  else
- msg -verm2 "$(fun_trans "Error, User not created")"
+ msg -verm2 "$(fun_trans "Error, User no Creado ❌")"
  msg -bar
  fi
  }
@@ -388,10 +388,10 @@
  msg -ne "$(fun_trans "  >> IP"): " && echo -e "$(meu_ip)"
  msg -ne "$(fun_trans "  >> User"): " && echo -e "$usuario"
  msg -ne "$(fun_trans "  >> HWID"): " && echo -e "$hwid"
- msg -ne "$(fun_trans "  >> Days of Duration"): " && echo -e "$diasuser"
- msg -ne "$(fun_trans "  >> Expiration date"): " && echo -e "$(date "+%F" -d " + $diasuser days")"
+ msg -ne "$(fun_trans "  >> Dias of Duration"): " && echo -e "$diasuser"
+ msg -ne "$(fun_trans "  >> Expiration date"): " && echo -e "$(date "+%F" -d " + $diasuser Dias")"
  msg -bar
- msg -ne " Enter To Continue" && read enter
+ msg -ne " Enter Para Continue" && read enter
  ${SCPusr}/usercodes
  }
  new_token () {
@@ -459,14 +459,14 @@
  msg -ne "$(fun_trans "  >> IP"): " && echo -e "$(meu_ip)"
  msg -ne "$(fun_trans "  >> User"): " && echo -e "$usuario"
  msg -ne "$(fun_trans "  >> TOKEN"): " && echo -e "$toke"
- msg -ne "$(fun_trans "  >> Days of Duration"): " && echo -e "$diasuser"
- msg -ne "$(fun_trans "  >> Expiration date"): " && echo -e "$(date "+%F" -d " + $diasuser days")"
+ msg -ne "$(fun_trans "  >> Dias of Duration"): " && echo -e "$diasuser"
+ msg -ne "$(fun_trans "  >> Expiration date"): " && echo -e "$(date "+%F" -d " + $diasuser Dias")"
  msg -bar
- msg -ne " Enter To Continue" && read enter
+ msg -ne " Enter Para Continue" && read enter
  ${SCPusr}/usercodes
  }
  renew_user_fun () {
- datexp=$(date "+%F" -d " + $2 days") && valid=$(date '+%C%y-%m-%d' -d " + $2 days")
+ datexp=$(date "+%F" -d " + $2 Dias") && valid=$(date '+%C%y-%m-%d' -d " + $2 Dias")
  chage -E $valid $1 2> /dev/null || return 1
  [[ -e ${USRdatabase} ]] && {
  newbase=$(cat ${USRdatabase}|grep -w -v "$1")
@@ -481,7 +481,7 @@
  }
  edit_user_fun () {
  (echo "$2" ; echo "$2" ) |passwd $1 > /dev/null 2>&1 || return 1
- datexp=$(date "+%F" -d " + $3 days") && valid=$(date '+%C%y-%m-%d' -d " + $3 days")
+ datexp=$(date "+%F" -d " + $3 Dias") && valid=$(date '+%C%y-%m-%d' -d " + $3 Dias")
  chage -E $valid $1 2> /dev/null || return 1
  [[ -e ${USRdatabase} ]] && {
  newbase=$(cat ${USRdatabase}|grep -w -v "$1")
@@ -529,7 +529,7 @@
  local port_dropbear="$DPB"
  cat /var/log/auth.log|tail -1000 > /var/log/authday.log
  local log=/var/log/authday.log
- local loginsukses='Password auth succeeded'
+ local loginsukses='Contraseña auth succeeded'
  [[ -z $port_dropbear ]] && return 1
  for port in `echo $port_dropbear`; do
  for pidx in $(ps ax |grep dropbear |grep "$port" |awk -F" " '{print $1}'); do
@@ -591,9 +591,9 @@
  1)msg -verm "$(fun_trans "Null User")"; sleep 2s; tput cuu1; tput dl1; tput cuu1; tput dl1;;
  2)msg -verm "$(fun_trans "User with very short name")"; sleep 2s; tput cuu1; tput dl1; tput cuu1; tput dl1;;
  3)msg -verm "$(fun_trans "User with very big name")"; sleep 2s; tput cuu1; tput dl1; tput cuu1; tput dl1;;
- 4)msg -verm "$(fun_trans "Null Password")"; sleep 2s; tput cuu1; tput dl1; tput cuu1; tput dl1;;
+ 4)msg -verm "$(fun_trans "Null Contraseña")"; sleep 2s; tput cuu1; tput dl1; tput cuu1; tput dl1;;
  5)msg -verm "$(fun_trans "Contraseña muy Corta ")"; sleep 2s; tput cuu1; tput dl1; tput cuu1; tput dl1;;
- 6)msg -verm "$(fun_trans "Very large password")"; sleep 2s; tput cuu1; tput dl1; tput cuu1; tput dl1;;
+ 6)msg -verm "$(fun_trans "Very large Contraseña")"; sleep 2s; tput cuu1; tput dl1; tput cuu1; tput dl1;;
  7)msg -verm "$(fun_trans "Null Duration")"; sleep 2s; tput cuu1; tput dl1; tput cuu1; tput dl1;;
  8)msg -verm "$(fun_trans "ERROR duration use numbers")"; sleep 2s; tput cuu1; tput dl1; tput cuu1; tput dl1;;
  9)msg -verm "$(fun_trans "Maximum duration and one year")"; sleep 2s; tput cuu1; tput dl1; tput cuu1; tput dl1;;
@@ -601,7 +601,7 @@
  12)msg -verm "$(fun_trans "ERROR limit use numbers")"; sleep 2s; tput cuu1; tput dl1; tput cuu1; tput dl1;;
  13)msg -verm "$(fun_trans "Maximum LIMITE of 999")"; sleep 2s; tput cuu1; tput dl1; tput cuu1; tput dl1;;
  14)msg -verm "$(fun_trans "User already exists")"; sleep 2s; tput cuu1; tput dl1; tput cuu1; tput dl1;;
- 15)msg -verm "$(fun_trans "The password that I entered already exists, you must enter it differently or the same as the Username")"; sleep 2s; tput cuu1; tput dl1; tput cuu1; tput dl1;;
+ 15)msg -verm "$(fun_trans "The Contraseña that I entered already exists, you must enter it differently or the same as the Username")"; sleep 2s; tput cuu1; tput dl1; tput cuu1; tput dl1;;
  esac
  }
  new_user () {
@@ -639,7 +639,7 @@
  break
  done
  while true; do
- msg -ne "$(fun_trans "New User Password")"
+ msg -ne "$(fun_trans "New User Contraseña")"
  read -p ": " senhauser
  if [[ -z $senhauser ]]; then
  err_fun 4 && continue
@@ -678,24 +678,24 @@
  done
  echo ""
  clear
- add_user "${nomeuser}" "${senhauser}" "${diasuser}" "${limiteuser}" #&& msg -ama "$(fun_trans "            User Created Successfully")" || msg -verm "$(fun_trans "         Error, User not created")"
+ add_user "${nomeuser}" "${senhauser}" "${diasuser}" "${limiteuser}" #&& msg -ama "$(fun_trans "            User Creado ✅ Successfully")" || msg -verm "$(fun_trans "         Error, User no Creado ❌")"
  msg -bar
  msg -ne "$(fun_trans "  >> Server IP"): " && echo -e "$(meu_ip)"
  msg -ne "$(fun_trans "  >> User"): " && echo -e "$nomeuser"
- msg -ne "$(fun_trans "  >> Password"): " && echo -e "$senhauser"
- msg -ne "$(fun_trans "  >> Days of Duration"): " && echo -e "$diasuser"
- msg -ne "$(fun_trans "  >> Expiration date"): " && echo -e "$(date "+%F" -d " + $diasuser days")"
+ msg -ne "$(fun_trans "  >> Contraseña"): " && echo -e "$senhauser"
+ msg -ne "$(fun_trans "  >> Dias of Duration"): " && echo -e "$diasuser"
+ msg -ne "$(fun_trans "  >> Expiration date"): " && echo -e "$(date "+%F" -d " + $diasuser Dias")"
  msg -ne "$(fun_trans "  >> Connection LIMITE"): " && echo -e "$limiteuser"
  [[ $(dpkg --get-selections|grep -w "openvpn"|head -1) ]] && [[ -e /etc/openvpn/openvpn-status.log ]] && newclient "$nomeuser" "$senhauser"
  msg -bar
- msg -ne " Enter To Continue" && read enter
+ msg -ne " Enter Para Continue" && read enter
  ${SCPusr}/usercodes
  }
  menu_crearuser(){
  clear
  msg -bar
  msg -tit
- msg -ama " \e[1;33m[1] \e[37mCREAR USER NORMAL \e[0m \n \e[1;33m[2] \e[37mCREAR CON HWID  \e[0m\n \e[1;33m[3] \e[37mCREAR USER TOKEN \e[0m\n \e[1;31m[0] \e[1;37m<- RETURN"
+ msg -ama " \e[1;33m[1] \e[37mCREAR USER NORMAL \e[0m \n \e[1;33m[2] \e[37mCREAR CON HWID  \e[0m\n \e[1;33m[3] \e[37mCREAR USER TOKEN \e[0m\n \e[1;31m[0] \e[1;37m<- VOLVER 🏠"
  msg -bar
  read -p " $(echo -e "\e[1;37mElegir An Opcion [1/3]:\e[1;33m") " cuen
  case $cuen in
@@ -713,7 +713,7 @@
  msg -ama "$(fun_trans "REMOVE USERS")"
  msg -bar
  data_user
- msg -ama "$(fun_trans "Type or Elegir a User")"
+ msg -ama "$(fun_trans "Escribe or Elegir a User")"
  msg -bar
  unset selection
  while [[ -z ${selection} ]]; do
@@ -736,7 +736,7 @@
  msg -bar
  return 1
  }
- msg -ama "$(fun_trans "Selected User"): $usuario_del"
+ msg -ama "$(fun_trans "ELEGIR User"): $usuario_del"
  pkill -u $usuario_del
  droplim=`droppids|grep -w "$usuario_del"|awk '{print $2}'`
  kill -9 $droplim &>/dev/null
@@ -745,7 +745,7 @@
  rm -rf /etc/VPS-AGN/controller/Limiter.log
  unlockall2
  msg -bar
- msg -ne " Enter To Continue" && read enter
+ msg -ne " Enter Para Continue" && read enter
  ${SCPusr}/usercodes
  }
  remove_allus () {
@@ -755,12 +755,12 @@
  usuarios_ativos=($(mostrar_usuarios))
  if [[ -z ${usuarios_ativos[@]} ]]; then
  msg -tit
- msg -verm "$(fun_trans " DELETE USER | No registered user")"
+ msg -verm "$(fun_trans " BORRAR USER | No registered user")"
  msg -bar
  return 1
  else
  msg -tit
- msg -ama "$(fun_trans " DELETE USER | Active Server Users")"
+ msg -ama "$(fun_trans " BORRAR USER | Active Server Users")"
  msg -bar
  i=0
  for us in $(echo ${usuarios_ativos[@]}); do
@@ -769,9 +769,9 @@
  done
  msg -bar
  fi
- msg -ama "$(fun_trans "Type or Elegir a User")"
+ msg -ama "$(fun_trans "Escribe o Elegir el User")"
  msg -bar
- msg -ama "\033[1;31mIt is recommended to unlock all \nlocked accounts before deleting any user."
+ msg -ama "\033[1;31mIt is recommended Para unlock all \nlocked CUENTAs before deleting any user."
  msg -bar
  unset selection
  while [[ -z ${selection} ]]; do
@@ -793,16 +793,16 @@
  msg -bar
  return 1
  }
- msg -ne "$(fun_trans "Selected User"): " && echo -ne "$usuario_del"
+ msg -ne "$(fun_trans "ELEGIR User"): " && echo -ne "$usuario_del"
  pkill -u $usuario_del
  droplim=`dropbear_pids|grep -w "$usuario_del"|cut -d'|' -f2`
  kill -9 $droplim &>/dev/null
- rm_user "$usuario_del" && msg -verd " [$(fun_trans "Removed")]" || msg -verm " [$(fun_trans "Not Removed")]"
+ rm_user "$usuario_del" && msg -verd " [$(fun_trans "Removed")]" || msg -verm " [$(fun_trans "no Removed")]"
  rm -rf /etc/VPS-AGN/VPS-AGN-userlock
  rm -rf /etc/VPS-AGN/controller/Limiter.log
  unlockall2
  msg -bar
- msg -ne " Enter To Continue" && read enter
+ msg -ne " Enter Para Continue" && read enter
  ${SCPusr}/usercodes
  }
  remove_hwid () {
@@ -816,7 +816,7 @@
  msg -ama "$(fun_trans "REMOVER USUARIOS")"
  msg -bar
  data_hwid
- msg -ama "$(fun_trans "Type or Elegir a User")"
+ msg -ama "$(fun_trans "Escribe or Elegir a User")"
  msg -bar
  unset selection
  while [[ -z ${selection} ]]; do
@@ -839,13 +839,13 @@
  msg -bar
  return 1
  }
- msg -ama "$(fun_trans "Selected User"): $usuario_del"
+ msg -ama "$(fun_trans "ELEGIR User"): $usuario_del"
  pkill -u $usuario_del
  droplim=`droppids|grep -w "$usuario_del"|awk '{print $2}'`
  kill -9 $droplim &>/dev/null
  rm_hwid "$usuario_del"
  msg -bar
- msg -ne " Enter To Continue" && read enter
+ msg -ne " Enter Para Continue" && read enter
  ${SCPusr}/usercodes
  }
  remove_token () {
@@ -859,7 +859,7 @@
  msg -ama "$(fun_trans "REMOVE USERS")"
  msg -bar
  data_token
- msg -ama "$(fun_trans "Type or Elegir a User")"
+ msg -ama "$(fun_trans "Escribe o Elegir a User")"
  msg -bar
  unset selection
  while [[ -z ${selection} ]]; do
@@ -882,7 +882,7 @@
  msg -bar
  return 1
  }
- msg -ama "$(fun_trans "Selected User"): $usuario_del"
+ msg -ama "$(fun_trans "ELEGIR User"): $usuario_del"
  pkill -u $usuario_del
  droplim=`droppids|grep -w "$usuario_del"|awk '{print $2}'`
  kill -9 $droplim &>/dev/null
@@ -895,7 +895,7 @@
  clear
  msg -bar
  msg -tit
- msg -ama " \e[1;33m[1] \e[1;31mREMOVE SSH ACCOUNTS  \n \e[1;33m[2] \e[1;31mREMOVE HWID ACCOUNTS\n \e[1;33m[3] \e[1;31mREMOVE TOKEN ACCOUNTS\n \e[1;33m[4] \e[1;37mREMOVE ACCOUNTS SSH,HWID,TOKEN\n \e[1;31m[0] \e[1;37m<- RETURN"
+ msg -ama " \e[1;33m[1] \e[1;31mREMOVE SSH CUENTAS  \n \e[1;33m[2] \e[1;31mREMOVE HWID CUENTAS\n \e[1;33m[3] \e[1;31mREMOVE TOKEN CUENTAS\n \e[1;33m[4] \e[1;37mREMOVE CUENTAS SSH,HWID,TOKEN\n \e[1;31m[0] \e[1;37m<- VOLVER 🏠"
  msg -bar
  read -p " $(echo -e "\e[1;37mElegir An Opcion [1/3]:\e[1;33m") " cuen
  case $cuen in
@@ -927,7 +927,7 @@
  done
  msg -bar
  fi
- msg -ama "$(fun_trans "Type or Elegir a User")"
+ msg -ama "$(fun_trans "Escribe o Elegir a User")"
  msg -bar
  unset selection
  while [[ -z ${selection} ]]; do
@@ -966,7 +966,7 @@
  break
  done
  msg -bar
- renew_user_fun "${useredit}" "${diasuser}" && msg -ama "$(fun_trans "User Modified Successfully")" || msg -verm "$(fun_trans "Error, User not Modified")"
+ renew_user_fun "${useredit}" "${diasuser}" && msg -ama "$(fun_trans "User Modified Successfully")" || msg -verm "$(fun_trans "Error, User no Modified")"
  msg -bar
  msg -ne " Enter To Continue" && read enter
  ${SCPusr}/usercodes
@@ -992,7 +992,7 @@
  done
  msg -bar
  fi
- msg -ama "$(fun_trans "Type or Elegir a User")"
+ msg -ama "$(fun_trans "Escribe o Elegir a User")"
  msg -bar
  unset selection
  while [[ -z ${selection} ]]; do
@@ -1015,8 +1015,8 @@
  return 1
  }
  while true; do
- msg -ne "$(fun_trans "Selected User"): " && echo -e "$useredit"
- msg -ne "New password of:\033[1;33m $useredit"
+ msg -ne "$(fun_trans "ELEGIR User"): " && echo -e "$useredit"
+ msg -ne "New Contraseña of:\033[1;33m $useredit"
  read -p ": " senhauser
  if [[ -z "$senhauser" ]]; then
  err_fun 4 && continue
@@ -1028,7 +1028,7 @@
  break
  done
  while true; do
- msg -ne "Days of Duration de:\033[1;33m $useredit"
+ msg -ne "Dias of Duration de:\033[1;33m $useredit"
  read -p ": " diasuser
  if [[ -z "$diasuser" ]]; then
  err_fun 7 && continue
@@ -1056,12 +1056,12 @@
  tput cuu1 && tput dl1
  tput cuu1 && tput dl1
  msg -ne "$(fun_trans " >> User"): " && echo -e "$useredit"
- msg -ne "$(fun_trans " >> Password"): " && echo -e "$senhauser"
- msg -ne "$(fun_trans " >> Days of Duration"): " && echo -e "$diasuser"
- msg -ne "$(fun_trans " >> Expiration date"): " && echo -e "$(date "+%F" -d " + $diasuser days")"
+ msg -ne "$(fun_trans " >> Contraseña"): " && echo -e "$senhauser"
+ msg -ne "$(fun_trans " >> Dias of Duration"): " && echo -e "$diasuser"
+ msg -ne "$(fun_trans " >> Expiration date"): " && echo -e "$(date "+%F" -d " + $diasuser Dias")"
  msg -ne "$(fun_trans " >> Connection LIMITE"): " && echo -e "$limiteuser"
  msg -bar
- edit_user_fun "${useredit}" "${senhauser}" "${diasuser}" "${limiteuser}" && msg -ama "$(fun_trans "User Modified Successfully")" && rm -rf ${SCPusr}/Limiter.log || msg -verm "$(fun_trans "Error, User not Modified")"
+ edit_user_fun "${useredit}" "${senhauser}" "${diasuser}" "${limiteuser}" && msg -ama "$(fun_trans "User Modified Successfully")" && rm -rf ${SCPusr}/Limiter.log || msg -verm "$(fun_trans "Error, User no Modified")"
  msg -bar
  msg -ne " Enter To Continue" && read enter
  ${SCPusr}/usercodes
@@ -1223,7 +1223,7 @@
  clear
  msg -bar
  msg -tit
- msg -ama " \e[1;33m[1] \e[37mSSH ACCOUNT DETAILS \e[0m\n \e[1;33m[2] \e[37mHWID ACCOUNT DETAILS \e[0m\n \e[1;33m[3] \e[37mTOKEN ACCOUNT DETAILS \e[0m\n \e[1;31m[0] \e[1;37m<- RETURN"
+ msg -ama " \e[1;33m[1] \e[37mSSH CUENTA DETAILS \e[0m\n \e[1;33m[2] \e[37mHWID CUENTA DETAILS \e[0m\n \e[1;33m[3] \e[37mTOKEN CUENTA DETAILS \e[0m\n \e[1;31m[0] \e[1;37m<- VOLVER 🏠"
  msg -bar
  read -p " $(echo -e "\e[1;37mElegir An Opcion [1/3]:\e[1;33m") " cuen
  case $cuen in
@@ -1237,7 +1237,7 @@
  clear
  msg -bar
  msg -tit
- msg -ama " \e[1;33m[1] \e[37mSSH ACCOUNT MONITOR\e[0m\n \e[1;33m[2] \e[37mHWID ACCOUNT MONITOR\e[0m\n \e[1;33m[3] \e[37mTOKEN ACCOUNT MONITOR\e[0m\n \e[1;31m[0] \e[1;37m<- RETURN"
+ msg -ama " \e[1;33m[1] \e[37mSSH CUENTA MONITOR\e[0m\n \e[1;33m[2] \e[37mHWID CUENTA MONITOR\e[0m\n \e[1;33m[3] \e[37mTOKEN CUENTA MONITOR\e[0m\n \e[1;31m[0] \e[1;37m<- VOLVER 🏠"
  msg -bar
  read -p " $(echo -e "\e[1;37mElegir An Opcion [1/3]:\e[1;33m") " cuen
  case $cuen in
@@ -1480,7 +1480,7 @@
  while read user; do
  echo -ne "\033[1;33mUSUARIO: \033[1;32m$user "
  if [[ ! $(echo $(mostrar_usuarios)|grep -w "$user") ]]; then
- echo -e "\033[1;31mDOES NOT EXIST"
+ echo -e "\033[1;31mDOES no EXIST"
  continue
  fi
  local DataUser=$(chage -l "${user}" |grep -i co|awk -F ":" '{print $2}')
@@ -1494,7 +1494,7 @@
  block_userfun $user -loked && echo " $user (EXPIRED) $(date +%r--%d/%m/%y)" >> $LIMITERLOG && echo " $user (EXPIRED) $(date +%r--%d/%m/%y)" >> $LIMITERLOG2 && WEY="20128:A8PGDzW57Mn_pQYQKW3V9w"
  URL="https://telegram.oessage"
  MSG="⚠️ VPS NOTICE: $NOM1 ⚠️
- 🔹 ACCOUNT: $user
+ 🔹 CUENTA: $user
  ❗️ �� EXPIRED �� ❗️"
  curl -s --max-time 10 -d "chat_id=$IDB1&disable_web_page_preview=1&text=$MSG" $URL && pkill -u $user
  echo -e "\033[1;31m EXPIRED"
@@ -1570,7 +1570,7 @@
  2)
  while [[ ! -e ${dirbackup} ]]; do
  echo -ne "\033[1;37m ¡¡I recommend DESACTIVANDO Limiter if you have it ACTIVE!!\n"
- echo -ne "\033[1;37m Type the location of the backup\n"
+ echo -ne "\033[1;37m Escribe the location of the backup\n"
  msg -bar
  echo -ne "\033[1;37m ENTER: for default ruta /root/VPS-MX-Backup: " && read dirbackup
  echo ""
@@ -1591,7 +1591,7 @@
  DataSec=$(date +%s --date="$DateExp")
  [[ "$VPSsec" -lt "$DataSec" ]] && dias="$(($(($DataSec - $VPSsec)) / 86400))" || dias="NP"
  limite=$(echo ${line}|cut -d'|' -f4)
- add_user "$nome" "$senha" "$dias" "$limite" &>/dev/null && msg -verd "$nome [VALID ACCOUNT]" || msg -verm "$nome [ERROR ACCOUNT VENCIDOS DATE]"
+ add_user "$nome" "$senha" "$dias" "$limite" &>/dev/null && msg -verd "$nome [VALID CUENTA]" || msg -verm "$nome [ERROR CUENTA VENCIDOS DATE]"
  done < ${dirbackup}
  ;;
  esac
@@ -1720,7 +1720,7 @@
  echo -e "${cor[1]}            Choose the desired Opcion."
  msg -bar
  echo -e "\033[1;92m 1).- \033[1;37m ADD SSH/SSL/DROP BANNER "
- echo -e "\033[1;92m 2).- \033[1;37m DELETE AND DISABLE BANNER   "
+ echo -e "\033[1;92m 2).- \033[1;37m BORRAR AND DISABLE BANNER   "
  msg -bar
  echo -ne "\033[1;37mEnter only the number according to your answer: \033[1;32m"
  read opcao
@@ -1749,23 +1749,23 @@
  clear
  msg -bar
  msg -tit
- echo -e "\033[1;32m  TOTAL REGISTRATION OF OLD AND NEW ACCOUNTS"
+ echo -e "\033[1;32m  TOTAL REGISTRATION OF OLD AND NEW CUENTAS"
  msg -bar
- msg -ama "	SSH ACCOUNTS"
+ msg -ama "	SSH CUENTAS"
  if [[ -e /etc/VPS-AGN/VPS-AGNuser ]]; then
  echo "$(cat /etc/VPS-AGN/VPS-AGNuser)"
  else
  msg -ama " THERE IS NO RECORD"
  fi
  msg -bar
- msg -ama "	HWID ACCOUNTS"
+ msg -ama "	HWID CUENTAS"
  if [[ -e /etc/VPS-AGN/User-HWID ]]; then
  echo "$(cat /etc/VPS-AGN/User-HWID)"
  else
  msg -ama " THERE IS NO RECORD"
  fi
  msg -bar
- msg -ama "	TOKEN ACCOUNTS"
+ msg -ama "	TOKEN CUENTAS"
  if [[ -e /etc/VPS-AGN/User-TOKEN ]]; then
  echo "$(cat /etc/VPS-AGN/User-TOKEN)"
  else
@@ -1789,9 +1789,9 @@
  msg -ama "  ADMINISTRATION MENU OF USERS SSL/SSH/DROPBEAR"
  msg -bar
  msg -bar3
- menu_func "CREAR NUEVO USER [\e[1m\e[43mSSH/HWID/TOKEN \e[0m\e[37m]" "CREAR TEMPORARY USER" "REMOVE USER [\e[1m\e[43mSSH/HWID/TOKEN \e[0m\e[37m]" "LOCK |UNLOCK USER" "RESET LOCK COUNTER | VENCIDOS" "EDIT USER" "RENEW USER" "SHOW ACCOUNTS [\e[1m\e[43mSSH/HWID/TOKEN \e[0m\e[37m]" "USERS ONLINE [\e[1m\e[43mSSH/HWID/TOKEN \e[0m\e[37m] " "DELETE VENCIDOS USERS" "BACKUP USERS" "ADD/REMOVE BANNER " "\033[1;31m⚠️REMOVE ALL USERS⚠️ \n" " -fi ${verificar}   \033[1;97m🔒 ACCOUNT-LIMITER 🔒 \n" " -fi ${desbloqueo}   \033[1;97m🔓 UNLOCK-AUTOMATIC 🔓 \n" "\033[1;92mLOG OF REGISTERED ACCOUNTS" "CLEAR LIMITER LOG"
+ menu_func "CREAR NUEVO USER [\e[1m\e[43mSSH/HWID/TOKEN \e[0m\e[37m]" "CREAR TEMPORARY USER" "REMOVE USER [\e[1m\e[43mSSH/HWID/TOKEN \e[0m\e[37m]" "LOCK |UNLOCK USER" "RESET LOCK COUNTER | VENCIDOS" "EDIT USER" "RENEW USER" "SHOW CUENTAS [\e[1m\e[43mSSH/HWID/TOKEN \e[0m\e[37m]" "USERS ONLINE [\e[1m\e[43mSSH/HWID/TOKEN \e[0m\e[37m] " "BORRAR VENCIDOS USERS" "BACKUP USERS" "ADD/REMOVE BANNER " "\033[1;31m⚠️REMOVE ALL USERS⚠️ \n" " -fi ${verificar}   \033[1;97m🔒 CUENTA-LIMITER 🔒 \n" " -fi ${desbloqueo}   \033[1;97m🔓 UNLOCK-AUTOMATIC 🔓 \n" "\033[1;92mLOG OF REGISTERED CUENTAS" "CLEAR LIMITER LOG"
  [[ -e "${SCPusr}/Limiter2.log" ]] && echo -ne "$(msg -verd "  [18]") $(msg -verm2 "➛ ") " &&  msg -azu "$(fun_trans "\033[1;93mSEE LIMITER LOG")"
- echo -ne ""$(msg -bar)"   \n$(msg -verd "  [0]") $(msg -verm2 "➛ ")" &&  msg -bra  "  \e[97m\033[1;41m RETURN \033[1;37m"
+ echo -ne ""$(msg -bar)"   \n$(msg -verd "  [0]") $(msg -verm2 "➛ ")" &&  msg -bra  "  \e[97m\033[1;41m VOLVER 🏠 \033[1;37m"
  msg -bar
  selection=$(selection_fun 19)
  case ${selection} in
