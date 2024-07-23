@@ -179,7 +179,6 @@ install_start() {
   msg -bar
   os_system
   apt update -y
-  apt upgrade -y
 }
 
 install_continue() {
