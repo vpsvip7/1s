@@ -29,7 +29,7 @@ set_traffic_limit() {
     iptables -A INPUT -i $INTERFACE -j TRAFFIC_CONTROL
     iptables -A OUTPUT -o $INTERFACE -j TRAFFIC_CONTROL
     
-    iptables -A TRAFFIC_CONTROL -m quota --quota $BYTES_LIMIT --bytes -j ACCEPT
+    iptables -A TRAFFIC_CONTROL -m quota --quota $BYTES_LIMIT  -j ACCEPT
     iptables -A TRAFFIC_CONTROL -j DROP
     
     echo "$(date) - Límite de $LIMIT_MB MB establecido" >> $LOG_FILE
