@@ -4,7 +4,7 @@
 INTERFACE="eth0"            # Interfaz de red
 MODE="limit"                # Modos: limit, throttle, monitor
 LIMIT_MB=100                # Límite total en MB
-THROTTLE_SPEED="500kbit"    # Velocidad máxima (para modo throttle)
+THROTTLE_SPEED="5mbit"    # Velocidad máxima (para modo throttle)
 LOG_FILE="/var/traffic.log" # Archivo de registro
 
 # Validar ejecución como root
