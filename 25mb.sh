@@ -23,7 +23,7 @@ iptables -A INPUT -i $INTERFACE -j TRAFFIC_LIMITER
 iptables -A OUTPUT -o $INTERFACE -j TRAFFIC_LIMITER
 
 # Aplicar límite de 25 MB
-iptables -A TRAFFIC_LIMITER -m quota --quota $BYTES_LIMIT --bytes -j ACCEPT
+iptables -A TRAFFIC_LIMITER -m quota --quota $BYTES_LIMIT 
 iptables -A TRAFFIC_LIMITER -j DROP
 
 echo "Límite de $LIMIT_MB MB aplicado en $INTERFACE (tráfico combinado)"
