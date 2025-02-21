@@ -1,94 +1,47 @@
 #!/bin/bash
 
 # Configuración
-INTERFACE="eth0"            # Interfaz de red
-MODE="limit"                # Modos: limit, throttle, monitor
-LIMIT_MB=100                # Límite total en MB
-THROTTLE_SPEED="5mbit"    # Velocidad máxima (para modo throttle)
-LOG_FILE="/var/traffic.log" # Archivo de registro
+INTERFACE="eth0"            # Cambiar por tu interfaz de red
+LIMIT_GB=0.01                 # Límite de tráfico en GB
+LOG_FILE="/var/traffic.log" # Archivo para guardar el consumo
 
-# Validar ejecución como root
+# Verificar root
 if [ "$(id -u)" != "0" ]; then
-    echo " [!] Debes ejecutar como root"
+    echo "Ejecutar como root"
     exit 1
 fi
 
-# Limpiar reglas anteriores
-clean_rules() {
-    iptables -F
-    iptables -X TRAFFIC_CONTROL 2>/dev/null
-    tc qdisc del dev $INTERFACE root 2>/dev/null
-}
+# Crear archivo de registro si no existe
+if [ ! -f "$LOG_FILE" ]; then
+    echo "0" > "$LOG_FILE"
+fi
 
-# Modo 1: Límite de tráfico absoluto
-set_traffic_limit() {
-    clean_rules
-    BYTES_LIMIT=$((LIMIT_MB * 1024 * 1024))
-    
-    iptables -N TRAFFIC_CONTROL
-    iptables -A INPUT -i $INTERFACE -j TRAFFIC_CONTROL
-    iptables -A OUTPUT -o $INTERFACE -j TRAFFIC_CONTROL
-    
-    iptables -A TRAFFIC_CONTROL -m quota --quota $BYTES_LIMIT  -j ACCEPT
-    iptables -A TRAFFIC_CONTROL -j DROP
-    
-    echo "$(date) - Límite de $LIMIT_MB MB establecido" >> $LOG_FILE
-}
+# Obtener tráfico actual de iptables
+RX_BYTES=$(iptables -L INPUT -vx | grep "$INTERFACE" | awk '{print $2}')
+TX_BYTES=$(iptables -L OUTPUT -vx | grep "$INTERFACE" | awk '{print $2}')
+TOTAL_BYTES=$((RX_BYTES + TX_BYTES))
 
-# Modo 2: Throttle de velocidad
-set_throttle() {
-    clean_rules
-    tc qdisc add dev $INTERFACE root handle 1: htb
-    tc class add dev $INTERFACE parent 1: classid 1:1 htb rate $THROTTLE_SPEED
-    tc filter add dev $INTERFACE protocol ip parent 1:0 prio 1 handle 1 fw flowid 1:1
-    iptables -t mangle -A POSTROUTING -o $INTERFACE -j MARK --set-mark 1
-    
-    echo "$(date) - Throttle de $THROTTLE_SPEED aplicado" >> $LOG_FILE
-}
+# Convertir a GB (1 GB = 1073741824 bytes)
+TOTAL_GB=$(echo "scale=2; $TOTAL_BYTES / 1073741824" | bc)
 
-# Modo 3: Monitoreo en tiempo real
-monitor_traffic() {
-    echo " [*] Monitoreo de tráfico (Ctrl+C para detener)"
-    watch -n 2 "iptables -L TRAFFIC_CONTROL -vx | grep -A 1 TRAFFIC_CONTROL"
-}
+# Leer consumo acumulado
+SAVED_GB=$(cat "$LOG_FILE")
 
-# Mostrar ayuda
-show_help() {
-    echo "Uso: $0 [opciones]"
-    echo ""
-    echo "Opciones:"
-    echo "  -i <interfaz>   Especificar interfaz de red (default: eth0)"
-    echo "  -m <modo>       Modos: limit, throttle, monitor"
-    echo "  -l <MB>         Límite en MB (para modo limit)"
-    echo "  -s <velocidad>  Velocidad (ej: 1mbit, 500kbit) para modo throttle"
-    echo "  -r              Reiniciar contadores"
-    echo "  -h              Mostrar ayuda"
-}
+# Sumar al total
+NEW_TOTAL=$(echo "$SAVED_GB + $TOTAL_GB" | bc)
 
-# Procesar parámetros
-while getopts "i:m:l:s:rh" opt; do
-    case $opt in
-        i) INTERFACE="$OPTARG";;
-        m) MODE="$OPTARG";;
-        l) LIMIT_MB="$OPTARG";;
-        s) THROTTLE_SPEED="$OPTARG";;
-        r) clean_rules
-           echo " [✓] Contadores reiniciados"
-           exit 0;;
-        h) show_help
-           exit 0;;
-        *) echo "Opción inválida"
-           exit 1;;
-    esac
-done
+# Guardar nuevo total
+echo "$NEW_TOTAL" > "$LOG_FILE"
 
-# Ejecutar modo seleccionado
-case $MODE in
-    "limit") set_traffic_limit;;
-    "throttle") set_throttle;;
-    "monitor") monitor_traffic;;
-    *) echo "Modo no válido. Usar: limit, throttle, monitor"
-       exit 1;;
-esac
+# Reiniciar contadores de iptables
+iptables -Z INPUT
+iptables -Z OUTPUT
 
-echo " [✓] Configuración aplicada en $INTERFACE"
+echo "Consumo actual: $NEW_TOTAL GB"
+
+# Bloquear tráfico si se supera el límite
+if [ $(echo "$NEW_TOTAL >= $LIMIT_GB" | bc) -eq 1 ]; then
+    echo "¡Límite de $LIMIT_GB GB alcanzado! Bloqueando tráfico..."
+    iptables -A INPUT -i "$INTERFACE" -j DROP
+    iptables -A OUTPUT -o "$INTERFACE" -j DROP
+fi
