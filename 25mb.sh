@@ -2,7 +2,7 @@
 
 # Configuración
 INTERFACE="eth0"            # Cambiar por tu interfaz de red
-LIMIT_GB=50                 # Límite de tráfico en GB
+LIMIT_GB=0.1                 # Límite de tráfico en GB
 LOG_FILE="/var/traffic.log" # Archivo para guardar el consumo
 
 # Verificar root
