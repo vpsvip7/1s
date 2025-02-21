@@ -1,29 +1,47 @@
 #!/bin/bash
 
 # Configuración
-INTERFACE="eth0"               # Nombre de tu interfaz de red (usar ip a para verificar)
-LIMIT_MB=25                    # Límite total de tráfico (subida + bajada)
-BYTES_LIMIT=$((LIMIT_MB * 1024 * 1024))  # Convertir MB a bytes
+INTERFACE="eth0"            # Cambiar por tu interfaz de red
+LIMIT_GB=50                 # Límite de tráfico en GB
+LOG_FILE="/var/traffic.log" # Archivo para guardar el consumo
 
-# Verificar si se ejecuta como root
+# Verificar root
 if [ "$(id -u)" != "0" ]; then
-    echo "¡Ejecuta como root!"
+    echo "Ejecutar como root"
     exit 1
 fi
 
-# Limpiar reglas anteriores
-iptables -F
-iptables -X TRAFFIC_LIMITER 2>/dev/null
+# Crear archivo de registro si no existe
+if [ ! -f "$LOG_FILE" ]; then
+    echo "0" > "$LOG_FILE"
+fi
 
-# Crear cadena personalizada
-iptables -N TRAFFIC_LIMITER
+# Obtener tráfico actual de iptables
+RX_BYTES=$(iptables -L INPUT -vx | grep "$INTERFACE" | awk '{print $2}')
+TX_BYTES=$(iptables -L OUTPUT -vx | grep "$INTERFACE" | awk '{print $2}')
+TOTAL_BYTES=$((RX_BYTES + TX_BYTES))
 
-# Redirigir todo el tráfico a la cadena
-iptables -A INPUT -i $INTERFACE -j TRAFFIC_LIMITER
-iptables -A OUTPUT -o $INTERFACE -j TRAFFIC_LIMITER
+# Convertir a GB (1 GB = 1073741824 bytes)
+TOTAL_GB=$(echo "scale=2; $TOTAL_BYTES / 1073741824" | bc)
 
-# Aplicar límite de 25 MB
-iptables -A TRAFFIC_LIMITER -m quota --quota $BYTES_LIMIT
-iptables -A TRAFFIC_LIMITER -j DROP
+# Leer consumo acumulado
+SAVED_GB=$(cat "$LOG_FILE")
 
-echo "Límite de $LIMIT_MB MB aplicado en $INTERFACE (tráfico combinado)"
+# Sumar al total
+NEW_TOTAL=$(echo "$SAVED_GB + $TOTAL_GB" | bc)
+
+# Guardar nuevo total
+echo "$NEW_TOTAL" > "$LOG_FILE"
+
+# Reiniciar contadores de iptables
+iptables -Z INPUT
+iptables -Z OUTPUT
+
+echo "Consumo actual: $NEW_TOTAL GB"
+
+# Bloquear tráfico si se supera el límite
+if [ $(echo "$NEW_TOTAL >= $LIMIT_GB" | bc) -eq 1 ]; then
+    echo "¡Límite de $LIMIT_GB GB alcanzado! Bloqueando tráfico..."
+    iptables -A INPUT -i "$INTERFACE" -j DROP
+    iptables -A OUTPUT -o "$INTERFACE" -j DROP
+fi
