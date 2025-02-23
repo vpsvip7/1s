@@ -1,7 +1,7 @@
 #!/bin/bash
 
    # Configuración
-   USER_PORT="2222"
+   USER_PORT="80"
    LIMIT_GB=20
    LIMIT_BYTES=$((LIMIT_GB * 1024 * 1024 * 1024))  # 20 GB en bytes
    TRAFFIC_LOG="/var/log/limiteduser_traffic.log"
