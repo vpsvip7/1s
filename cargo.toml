@@ -1,0 +1,48 @@
+use std::time::Instant;
+use reqwest::Client;
+use bytes::Bytes;
+
+const DOWNLOAD_URL: &str = "https://proof.ovh.net/files/10Mb.dat"; // Archivo de prueba de 10MB
+const UPLOAD_URL: &str = "https://httpbin.org/post"; // Endpoint para pruebas de subida
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    // Test de descarga
+    let download_speed = test_download().await?;
+    println!("Velocidad de descarga: {:.2} Mbps", download_speed);
+
+    // Test de subida
+    let upload_speed = test_upload().await?;
+    println!("Velocidad de subida: {:.2} Mbps", upload_speed);
+
+    Ok(())
+}
+
+async fn test_download() -> Result<f64, Box<dyn std::error::Error>> {
+    let client = Client::new();
+    let start_time = Instant::now();
+    
+    let response = client.get(DOWNLOAD_URL).send().await?;
+    let bytes = response.bytes().await?;
+    
+    let duration = start_time.elapsed().as_secs_f64();
+    let speed_mbps = (bytes.len() as f64 * 8.0) / (duration * 1_000_000.0);
+    
+    Ok(speed_mbps)
+}
+
+async fn test_upload() -> Result<f64, Box<dyn std::error::Error>> {
+    let client = Client::new();
+    let data = Bytes::from(vec![0u8; 1_000_000]); // 1MB de datos de prueba
+    
+    let start_time = Instant::now();
+    let _response = client.post(UPLOAD_URL)
+        .body(data.clone())
+        .send()
+        .await?;
+    
+    let duration = start_time.elapsed().as_secs_f64();
+    let speed_mbps = (data.len() as f64 * 8.0) / (duration * 1_000_000.0);
+    
+    Ok(speed_mbps)
+}
