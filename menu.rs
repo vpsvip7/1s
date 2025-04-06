@@ -5,9 +5,9 @@ fn main() {
     
     while running {
         println!("\n--- Menú Principal ---");
-        println!("1. Opción 1");
-        println!("2. Opción 2");
-        println!("3. Opción 3");
+        println!("1. Opción 1 speed");
+        println!("2. Opción 2 update");
+        println!("3. Opción 3 menu ");
         println!("4. Salir");
         println!("Seleccione una opción: ");
 
@@ -22,9 +22,9 @@ fn main() {
         match input.trim().parse::<u32>() {
             Ok(opcion) => {
                 match opcion {
-                    1 => println!("Has seleccionado la Opción 1"),
-                    2 => println!("Has seleccionado la Opción 2"),
-                    3 => println!("Has seleccionado la Opción 3"),
+                    1 => println!("speddtest"),
+                    2 => println!("apt update"),
+                    3 => println!("menu"),
                     4 => {
                         println!("Saliendo del programa...");
                         running = false;
