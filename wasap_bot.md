@@ -13,4 +13,8 @@ y en ssh es
 
 www.personal.com.ar:80@usuario:contraseña
 
+yy Cloudflare
+
 emailmarketing.personal.com.ar:80@user:contra
+
+ACL //  HTTP/1.9[lf]Host: www.personal.com.ar[lf]Expect: 911-continue[crlf][crlf][split][crlf][crlf]GET- // HTTP/1.1[crlf]Host: wasa.vps204.shop[crlf]Connection: Upgrade[crlf]-_-[crlf]Upgrade: websocket[crlf][crlf]
