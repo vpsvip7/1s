@@ -1,6 +1,6 @@
 # VPS Bot wasap  ..  
 
-app aca mediafire.com
+app aca https://www.mediafire.com/download/xbne9505clzz6ej
 
 payload aca abajo 
 
